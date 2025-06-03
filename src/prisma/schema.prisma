@@ -13,3 +13,21 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model SignosVitales {
+  id          Int       @id @default(autoincrement())
+  presion     Float
+  horario     DateTime
+  id_paciente Int
+
+  resultados  Resultado[]
+}
+
+model Resultado {
+  id             Int            @id @default(autoincrement())
+  id_signo_vital Int
+  id_paciente    Int
+  resultado      Float
+
+  signoVital     SignosVitales @relation(fields: [id_signo_vital], references: [id])
+}
