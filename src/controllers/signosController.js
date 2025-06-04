@@ -4,7 +4,13 @@ import { crearSignoVital, guardarResultadoIA } from '../services/signosService.j
 export const registrarSignosVitales = async (req, res) => {
   try {
     const { presion, horario, id_paciente } = req.body
-
+// Validar datos obligatorios
+    if (!presion || !horario || !id_paciente) {
+      return res.status(400).json({ error: 'Faltan datos obligatorios' });
+    }
+    
+    console.log('Datos recibidos:', req.body);
+    
     const nuevoSigno = await crearSignoVital({
       presion,
       horario: new Date(horario),
