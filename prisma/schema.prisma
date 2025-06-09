@@ -16,16 +16,13 @@ datasource db {
 model SignosVitales {
   id          Int      @id @default(autoincrement())
   presion     Float
-  horario     DateTime
-  id_paciente Int
-
-  resultados Resultado[]
+  horario     DateTime @default(now())
+  resultado   Resultado? 
 }
 
 model Resultado {
   id             Int   @id @default(autoincrement())
-  id_signo_vital Int
-  id_paciente    Int
+  id_signo_vital Int @unique
   resultado      Float
 
   signoVital SignosVitales @relation(fields: [id_signo_vital], references: [id])
