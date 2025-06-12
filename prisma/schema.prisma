@@ -26,7 +26,6 @@ model SignosVitales {
   resultado   Resultado? 
 
   @@map("SignosVitales")//nombre base de datos
-  @@unique([presion, horario]) // Asegura que la combinación de presion y horario sea única
 }
 
 model Resultado {
