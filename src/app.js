@@ -45,5 +45,5 @@ const startServer = async () => {
 
 startServer();
 
-export default app;
+// export default app;
 

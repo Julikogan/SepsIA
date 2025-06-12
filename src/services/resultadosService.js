@@ -1,4 +1,4 @@
-import prisma from '../models/prisma.cjs';
+import prisma from '../models/prisma.js';
 
 export const obtenerResultadoPorSignoVital = async (idSignoVital) => {
   return await prisma.resultado.findUnique({
