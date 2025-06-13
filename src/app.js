@@ -32,7 +32,7 @@ app.use('/api', resultadosRoutes);
 
 // Root route
 app.get('/', (req, res) => {
-    res.send('API de Signos Vitales y Resultados');
+    res.json({ message: "API funcionan" });
 });
 
 const startServer = async () => {
