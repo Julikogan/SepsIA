@@ -13,8 +13,7 @@ export const registrarSignosVitales = async (req, res) => {
     
     const nuevoSigno = await crearSignoVital({
       presion,
-      horario: new Date(horario),
-      id_paciente
+      horario: new Date(horario)
     })
 // Llamada a la IA (reemplazar URL con la real)
 /* const respuestaIA = await axios.post('http://localhost:5000/analizar', {
@@ -26,10 +25,9 @@ export const registrarSignosVitales = async (req, res) => {
 const respuestaIA = { data: { porcentaje: Math.random() * 100 } }
 
     const resultado = await guardarResultadoIA({
-      id_signo_vital: nuevoSigno.id,
-      id_paciente,
-      resultado: respuestaIA.data.porcentaje
-    })
+     id_signo_vital: nuevoSigno.id,
+     resultado: respuestaIA.data.porcentaje // Remove id_paciente if not needed
+   });
 
     res.status(201).json({ signo: nuevoSigno, resultado })
   } catch (err) {
