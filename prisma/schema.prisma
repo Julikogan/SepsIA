@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -20,17 +14,15 @@ model User {
 }
 
 model SignosVitales {
-  id          Int      @id @default(autoincrement())
-  presion     Float    
-  horario     DateTime @default(now())
-  
-  resultado   Resultado[] 
+  id        Int         @id @default(autoincrement())
+  presion   Float
+  horario   DateTime    @default(now())
+  resultado Resultado[]
 }
 
 model Resultado {
-  id             Int   @id @default(autoincrement())
-  resultado      Float 
-
-  signoVital SignosVitales @relation(fields: [id_signo_vital], references: [id])
+  id             Int           @id @default(autoincrement())
+  resultado      Float
   id_signo_vital Int
+  signoVital     SignosVitales @relation(fields: [id_signo_vital], references: [id])
 }

@@ -1,4 +1,4 @@
-import { obtenerResultadoPorSignoVital } from '../services/resultadosService.js';
+import { obtenerResultadoPorSignoVital } from '../services/resultadosService';
 
 export const getResultadoPorSignoVital = async (req, res) => {
   const idSigno = Number(req.params.id)
